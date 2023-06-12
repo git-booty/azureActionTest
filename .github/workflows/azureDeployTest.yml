@@ -12,8 +12,8 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - run: scp -r ./ tony@172.187.208.81:/home/userName 
-
+#      - run: scp -r ./ tony@172.187.208.81:/home/userName 
+      - run: lsb_release -a
       - name: Checkout source code
         uses: actions/checkout@v2 
 
