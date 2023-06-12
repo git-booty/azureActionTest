@@ -15,7 +15,7 @@ jobs:
       - run: scp -r ./ tony@172.187.208.81:/home/userName 
 
       - name: Checkout source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2 
 
        
           
