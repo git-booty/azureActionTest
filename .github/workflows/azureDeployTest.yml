@@ -1,21 +1,21 @@
+name: scp files
 on: [push]
-
-name: Deploy code
-
 jobs:
 
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-#      - run: scp -r ./ tony@172.187.208.81:/home/userName 
-      - run: lsb_release -a
-      - name: Checkout source code
-        uses: actions/checkout@v2 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "./readme.md"
+        target: home/tony
 
        
           
